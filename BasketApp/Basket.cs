@@ -23,7 +23,7 @@ namespace BasketApp
         List<GiftVoucher> _appliedVouchers;
         decimal _originalPrice;
         decimal _totalPrice;
-        decimal _discountPrice;
+        decimal _discountTotal;
         string _errorMessage;
 
         public Basket()
@@ -92,7 +92,7 @@ namespace BasketApp
             if (voucher.GetType() == typeof(GiftVoucher))
             {
                 isVoucherValid = true;
-                _discountPrice = _discountPrice + voucher.Discount;
+                _discountTotal = _discountTotal + voucher.Discount;
             }
             else if (!_appliedVouchers.Any(a => a.GetType() == typeof(OfferVoucher) && !_appliedVouchers.Any(z => z.GetType() == typeof(CategoryOfferVoucher))))
             {
@@ -118,7 +118,7 @@ namespace BasketApp
         bool IsOfferVoucherValid(OfferVoucher voucher)
         {
             bool isValid = IsVoucherThresholdMet(voucher);
-            _discountPrice = (isValid) ? _discountPrice + voucher.Discount : _discountPrice;
+            _discountTotal = (isValid) ? _discountTotal + voucher.Discount : _discountTotal;
             return isValid;
         }
 
@@ -145,7 +145,7 @@ namespace BasketApp
                     }
 
                     isValid = true;
-                    _discountPrice = _discountPrice + adjustedProductDiscount;
+                    _discountTotal = _discountTotal + adjustedProductDiscount;
                 }
                 else
                 {
@@ -201,12 +201,12 @@ namespace BasketApp
 
         void CalculateTotalPrice()
         {
-            _totalPrice = _originalPrice - _discountPrice;
+            _totalPrice = _originalPrice - _discountTotal;
         }
 
         void ReEvaluateAppliedVouchers()
         {
-            _discountPrice = 0;
+            _discountTotal = 0;
             List<GiftVoucher> appliedVouchers = new List<GiftVoucher>();
             foreach (GiftVoucher voucher in AppliedVouchers)
             {
