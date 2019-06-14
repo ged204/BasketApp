@@ -27,9 +27,10 @@ namespace BasketApp.Tests.TestSteps
             IBasket basket = (IBasket)_context["Basket"];
             basket.AddItemsToBasket(products);
         }
-        
-        [Given(@"I have also applied the following gift voucher")]
-        public void GivenIHaveAlsoAppliedTheFollowingGiftVoucher(Table table)
+
+    
+        [When(@"I apply the following gift vouchers")]
+        public void WhenIApplyTheFollowingGiftVouchers(Table table)
         {
             List<GiftVoucher> vouchers = table.CreateSet<GiftVoucher>().ToList();
             IBasket basket = (IBasket)_context["Basket"];
@@ -39,8 +40,8 @@ namespace BasketApp.Tests.TestSteps
             }
         }
 
-        [Given(@"I have also applied the following offer voucher")]
-        public void GivenIHaveAlsoAppliedTheFollowingOfferVoucher(Table table)
+        [When(@"I apply the following offer vouchers")]
+        public void WhenIApplyTheFollowingOfferVouchers(Table table)
         {
             List<OfferVoucher> vouchers = table.CreateSet<OfferVoucher>().ToList();
             IBasket basket = (IBasket)_context["Basket"];
@@ -50,8 +51,8 @@ namespace BasketApp.Tests.TestSteps
             }
         }
 
-        [Given(@"I have also applied the following category offer voucher")]
-        public void GivenIHaveAlsoAppliedTheFollowingCategoryOfferVoucher(Table table)
+        [When(@"I apply the following category offer vouchers")]
+        public void WhenIApplyTheFollowingCategoryOfferVouchers(Table table)
         {
             List<CategoryOfferVoucher> vouchers = table.CreateSet<CategoryOfferVoucher>().ToList();
             IBasket basket = (IBasket)_context["Basket"];
@@ -61,8 +62,8 @@ namespace BasketApp.Tests.TestSteps
             }
         }
 
-        [Given(@"I then remove the following item from the basket")]
-        public void GivenIThenRemoveTheFollowingItemFromTheBasket(Table table)
+        [When(@"I then remove the following item from the basket")]
+        public void WhenIThenRemoveTheFollowingItemFromTheBasket(Table table)
         {
             List<Product> products = table.CreateSet<Product>().ToList();
             IBasket basket = (IBasket)_context["Basket"];
@@ -72,34 +73,28 @@ namespace BasketApp.Tests.TestSteps
                 basket.RemoveItemFromBasket(product);
             }
         }
-
-
-        [When(@"The basket calculates the total price")]
-        public void WhenTheBasketCalculatesTheTotalPrice()
-        {
-            IBasket basket = (IBasket)_context["Basket"];
-            _context["TotalPrice"] = basket.TotalPrice;
-            _context["ErrorMessage"] = basket.ErrorMessage;
-        }
         
         [Then(@"The total price should be (.*)")]
         public void ThenTheTotalPriceShouldBe(Decimal expectedTotalPrice)
         {
-            decimal actualTotalPrice = (decimal)_context["TotalPrice"];
+            IBasket basket = (IBasket)_context["Basket"];
+            decimal actualTotalPrice = basket.TotalPrice;
             Assert.AreEqual(expectedTotalPrice, actualTotalPrice);
         }
         
         [Then(@"There should be no error message")]
         public void ThenThereShouldBeNoErrorMessage()
         {
-            string actualErrorMessage = (string)_context["ErrorMessage"];
+            IBasket basket = (IBasket)_context["Basket"];
+            string actualErrorMessage = basket.ErrorMessage;
             Assert.IsTrue(String.IsNullOrEmpty(actualErrorMessage));
         }
 
         [Then(@"The error message should be ""(.*)""")]
         public void ThenTheErrorMessageShouldBe(string expectedErrorMessage)
         {
-            string actualErrorMessage = (string)_context["ErrorMessage"];
+            IBasket basket = (IBasket)_context["Basket"];
+            string actualErrorMessage = basket.ErrorMessage;
             Assert.IsTrue(expectedErrorMessage == actualErrorMessage);
         }
 

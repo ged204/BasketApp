@@ -53,6 +53,15 @@ namespace BasketApp
             get { return _errorMessage; }
         }
 
+        bool IsOfferVoucherAlreadyApplied
+        {
+            get
+            {
+                return (_appliedVouchers.Any(a => a.GetType() == typeof(OfferVoucher) || 
+                        _appliedVouchers.Any(z => z.GetType() == typeof(CategoryOfferVoucher))));
+            }
+        }
+
         #endregion
 
         #region Public Methods
@@ -94,7 +103,7 @@ namespace BasketApp
                 isVoucherValid = true;
                 _discountTotal = _discountTotal + voucher.Discount;
             }
-            else if (!_appliedVouchers.Any(a => a.GetType() == typeof(OfferVoucher) && !_appliedVouchers.Any(z => z.GetType() == typeof(CategoryOfferVoucher))))
+            else if (!IsOfferVoucherAlreadyApplied)
             {
                 if (voucher.GetType() == typeof(OfferVoucher))
                 {

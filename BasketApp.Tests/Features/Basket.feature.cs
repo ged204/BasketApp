@@ -122,12 +122,10 @@ this.ScenarioInitialize(scenarioInfo);
                         "XXX-XXX",
                         "5.00"});
 #line 12
- testRunner.And("I have also applied the following gift voucher", ((string)(null)), table2, "And ");
+ testRunner.When("I apply the following gift vouchers", ((string)(null)), table2, "When ");
 #line 15
- testRunner.When("The basket calculates the total price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 16
  testRunner.Then("The total price should be 60.15", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 17
+#line 16
  testRunner.And("There should be no error message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -139,7 +137,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void ApplyASingleOfferVoucherToABasketThatMeetsTheThreshold()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Apply a single offer voucher to a basket that meets the threshold", null, ((string[])(null)));
-#line 19
+#line 18
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -155,7 +153,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Jumper",
                         "26.00",
                         "Clothes"});
-#line 20
+#line 19
  testRunner.Given("I have added the following items to my basket", ((string)(null)), table3, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table4 = new TechTalk.SpecFlow.Table(new string[] {
@@ -166,13 +164,11 @@ this.ScenarioInitialize(scenarioInfo);
                         "YYY-YYY",
                         "5.00",
                         "50.00"});
-#line 24
- testRunner.And("I have also applied the following offer voucher", ((string)(null)), table4, "And ");
-#line 27
- testRunner.When("The basket calculates the total price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 28
+#line 23
+ testRunner.When("I apply the following offer vouchers", ((string)(null)), table4, "When ");
+#line 26
  testRunner.Then("The total price should be 46.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 29
+#line 27
  testRunner.And("There should be no error message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -186,7 +182,7 @@ this.ScenarioInitialize(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Apply a single gift voucher and offer voucher to a basket that meets the discount" +
                     " threshold", null, ((string[])(null)));
-#line 31
+#line 29
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -202,7 +198,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Jumper",
                         "26.00",
                         "Clothes"});
-#line 32
+#line 30
  testRunner.Given("I have added the following items to my basket", ((string)(null)), table5, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
@@ -211,8 +207,8 @@ this.ScenarioInitialize(scenarioInfo);
             table6.AddRow(new string[] {
                         "XXX-XXX",
                         "5.00"});
-#line 36
- testRunner.And("I have also applied the following gift voucher", ((string)(null)), table6, "And ");
+#line 34
+ testRunner.When("I apply the following gift vouchers", ((string)(null)), table6, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
                         "VoucherCode",
@@ -222,13 +218,11 @@ this.ScenarioInitialize(scenarioInfo);
                         "YYY-YYY",
                         "5.00",
                         "50.00"});
-#line 39
- testRunner.And("I have also applied the following offer voucher", ((string)(null)), table7, "And ");
-#line 42
- testRunner.When("The basket calculates the total price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 43
+#line 37
+ testRunner.And("I apply the following offer vouchers", ((string)(null)), table7, "And ");
+#line 40
  testRunner.Then("The total price should be 41.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 44
+#line 41
  testRunner.And("There should be no error message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -242,7 +236,7 @@ this.ScenarioInitialize(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Apply a single category offer voucher to a basket with qualifying items that meet" +
                     "s the threshold", null, ((string[])(null)));
-#line 46
+#line 43
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -262,7 +256,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Head Light",
                         "3.50",
                         "Head Gear"});
-#line 47
+#line 44
  testRunner.Given("I have added the following items to my basket", ((string)(null)), table8, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table9 = new TechTalk.SpecFlow.Table(new string[] {
@@ -275,13 +269,11 @@ this.ScenarioInitialize(scenarioInfo);
                         "5.00",
                         "Head Gear",
                         "50.00"});
+#line 49
+ testRunner.When("I apply the following category offer vouchers", ((string)(null)), table9, "When ");
 #line 52
- testRunner.And("I have also applied the following category offer voucher", ((string)(null)), table9, "And ");
-#line 55
- testRunner.When("The basket calculates the total price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 56
  testRunner.Then("The total price should be 51.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 57
+#line 53
  testRunner.And("There should be no error message", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -293,7 +285,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void ApplyASingleCategoryOfferVoucherToABasketWithNoQualifyingItems()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Apply a single category offer voucher to a basket with no qualifying items", null, ((string[])(null)));
-#line 59
+#line 55
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -309,7 +301,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Jumper",
                         "26.00",
                         "Clothes"});
-#line 60
+#line 56
  testRunner.Given("I have added the following items to my basket", ((string)(null)), table10, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table11 = new TechTalk.SpecFlow.Table(new string[] {
@@ -320,13 +312,11 @@ this.ScenarioInitialize(scenarioInfo);
                         "YYY-YYY",
                         "5.00",
                         "Head Gear"});
-#line 64
- testRunner.And("I have also applied the following category offer voucher", ((string)(null)), table11, "And ");
-#line 67
- testRunner.When("The basket calculates the total price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 68
+#line 60
+ testRunner.When("I apply the following category offer vouchers", ((string)(null)), table11, "When ");
+#line 63
  testRunner.Then("The total price should be 51.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 69
+#line 64
  testRunner.And("The error message should be \"There are no products in your basket applicable to v" +
                     "oucher YYY-YYY.\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
@@ -341,7 +331,7 @@ this.ScenarioInitialize(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Apply a single category offer voucher to a basket with qualifying items that does" +
                     "n\'t meet the threshold", null, ((string[])(null)));
-#line 71
+#line 66
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -361,7 +351,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Head Light",
                         "3.50",
                         "Head Gear"});
-#line 72
+#line 67
  testRunner.Given("I have added the following items to my basket", ((string)(null)), table12, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table13 = new TechTalk.SpecFlow.Table(new string[] {
@@ -374,13 +364,11 @@ this.ScenarioInitialize(scenarioInfo);
                         "5.00",
                         "Head Gear",
                         "70.00"});
-#line 77
- testRunner.And("I have also applied the following category offer voucher", ((string)(null)), table13, "And ");
-#line 80
- testRunner.When("The basket calculates the total price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 81
+#line 72
+ testRunner.When("I apply the following category offer vouchers", ((string)(null)), table13, "When ");
+#line 75
  testRunner.Then("The total price should be 54.50", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 82
+#line 76
  testRunner.And("The error message should be \"You have not reached the spend threshold for the vou" +
                     "cher YYY-YYY. Spend another £15.51 to receive the £5.00 discount from your baske" +
                     "t total.\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -394,7 +382,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void ApplyAnOfferVoucherToABasketWithAGiftVoucherItem()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Apply an offer voucher to a basket with a gift voucher item", null, ((string[])(null)));
-#line 84
+#line 78
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -410,7 +398,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Gift Voucher",
                         "30.00",
                         "Gift Vouchers"});
-#line 85
+#line 79
  testRunner.Given("I have added the following items to my basket", ((string)(null)), table14, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table15 = new TechTalk.SpecFlow.Table(new string[] {
@@ -421,13 +409,11 @@ this.ScenarioInitialize(scenarioInfo);
                         "YYY-YYY",
                         "5.00",
                         "50.00"});
-#line 89
- testRunner.And("I have also applied the following offer voucher", ((string)(null)), table15, "And ");
-#line 92
- testRunner.When("The basket calculates the total price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 93
+#line 83
+ testRunner.When("I apply the following offer vouchers", ((string)(null)), table15, "When ");
+#line 86
  testRunner.Then("The total price should be 55.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 94
+#line 87
  testRunner.And("The error message should be \"You have not reached the spend threshold for the vou" +
                     "cher YYY-YYY. Spend another £25.01 to receive the £5.00 discount from your baske" +
                     "t total.\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
@@ -441,7 +427,7 @@ this.ScenarioInitialize(scenarioInfo);
         public virtual void ApplyTwoValidOfferVouchersToTheSameBasket()
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Apply two valid offer vouchers to the same basket", null, ((string[])(null)));
-#line 96
+#line 89
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -457,7 +443,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Jumper",
                         "26.00",
                         "Clothes"});
-#line 97
+#line 90
  testRunner.Given("I have added the following items to my basket", ((string)(null)), table16, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table17 = new TechTalk.SpecFlow.Table(new string[] {
@@ -472,13 +458,11 @@ this.ScenarioInitialize(scenarioInfo);
                         "ZZZ-ZZZ",
                         "5.00",
                         "50.00"});
-#line 101
- testRunner.And("I have also applied the following offer voucher", ((string)(null)), table17, "And ");
-#line 105
- testRunner.When("The basket calculates the total price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 106
+#line 94
+ testRunner.When("I apply the following offer vouchers", ((string)(null)), table17, "When ");
+#line 98
  testRunner.Then("The total price should be 46.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 107
+#line 99
  testRunner.And("The error message should be \"You can only use one offer voucher at a time.\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
             this.ScenarioCleanup();
@@ -492,7 +476,7 @@ this.ScenarioInitialize(scenarioInfo);
         {
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Apply a single offer voucher to a basket that meets the threshold and then remove" +
                     " an item so the basket doesn\'t meet the threshold", null, ((string[])(null)));
-#line 109
+#line 101
 this.ScenarioInitialize(scenarioInfo);
             this.ScenarioStart();
 #line hidden
@@ -508,7 +492,7 @@ this.ScenarioInitialize(scenarioInfo);
                         "Jumper",
                         "26.00",
                         "Clothes"});
-#line 110
+#line 102
  testRunner.Given("I have added the following items to my basket", ((string)(null)), table18, "Given ");
 #line hidden
             TechTalk.SpecFlow.Table table19 = new TechTalk.SpecFlow.Table(new string[] {
@@ -519,8 +503,8 @@ this.ScenarioInitialize(scenarioInfo);
                         "YYY-YYY",
                         "5.00",
                         "50.00"});
-#line 114
- testRunner.And("I have also applied the following offer voucher", ((string)(null)), table19, "And ");
+#line 106
+ testRunner.When("I apply the following offer vouchers", ((string)(null)), table19, "When ");
 #line hidden
             TechTalk.SpecFlow.Table table20 = new TechTalk.SpecFlow.Table(new string[] {
                         "Name",
@@ -530,13 +514,11 @@ this.ScenarioInitialize(scenarioInfo);
                         "Hat",
                         "25.00",
                         "Clothes"});
-#line 117
+#line 109
  testRunner.And("I then remove the following item from the basket", ((string)(null)), table20, "And ");
-#line 120
- testRunner.When("The basket calculates the total price", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
-#line 121
+#line 112
  testRunner.Then("The total price should be 26.00", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line 122
+#line 113
  testRunner.And("The error message should be \"You have not reached the spend threshold for the vou" +
                     "cher YYY-YYY. Spend another £24.01 to receive the £5.00 discount from your baske" +
                     "t total.\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
