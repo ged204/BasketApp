@@ -32,9 +32,9 @@ namespace BasketApp.Tests.TestSteps
         [Given(@"I have also applied the following gift voucher")]
         public void GivenIHaveAlsoAppliedTheFollowingGiftVoucher(Table table)
         {
-            List<Voucher> vouchers = table.CreateSet<Voucher>().ToList();
+            List<GiftVoucher> vouchers = table.CreateSet<GiftVoucher>().ToList();
             IBasket basket = (IBasket)_context["Basket"];
-            foreach (Voucher voucher in vouchers)
+            foreach (GiftVoucher voucher in vouchers)
             {
                 basket.ApplyVoucher(voucher);
             }

@@ -4,12 +4,12 @@ using System.Text;
 
 namespace BasketApp.Models
 {
-    public class Voucher
+    public class GiftVoucher
     {
         string _voucherCode;
         decimal _discount;
 
-        public Voucher(string voucherCode, decimal discount)
+        public GiftVoucher(string voucherCode, decimal discount)
         {
             _voucherCode = voucherCode;
             _discount = discount;
@@ -26,7 +26,7 @@ namespace BasketApp.Models
         }
     }
 
-    public class OfferVoucher : Voucher
+    public class OfferVoucher : GiftVoucher
     {
         decimal _threshold;
 

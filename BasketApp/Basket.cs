@@ -9,18 +9,18 @@ namespace BasketApp
     public interface IBasket
     {
         List<Product> BasketItems { get; }
-        List<Voucher> AppliedVouchers { get; }
+        List<GiftVoucher> AppliedVouchers { get; }
         decimal TotalPrice { get; }
         string ErrorMessage { get; }
 
         void AddItemsToBasket(List<Product> products);
-        void ApplyVoucher(Voucher voucher);
+        void ApplyVoucher(GiftVoucher voucher);
         void RemoveItemFromBasket(Product product);
     }
     public class Basket : IBasket
     {
         List<Product> _basketItems;
-        List<Voucher> _appliedVouchers;
+        List<GiftVoucher> _appliedVouchers;
         decimal _originalPrice;
         decimal _totalPrice;
         decimal _discountPrice;
@@ -29,15 +29,16 @@ namespace BasketApp
         public Basket()
         {
             _basketItems = new List<Product>();
-            _appliedVouchers = new List<Voucher>();
+            _appliedVouchers = new List<GiftVoucher>();
         }
 
+        #region Properties
         public List<Product> BasketItems
         {
             get { return _basketItems; }
         }
 
-        public List<Voucher> AppliedVouchers
+        public List<GiftVoucher> AppliedVouchers
         {
             get { return _appliedVouchers; }
         }
@@ -52,6 +53,9 @@ namespace BasketApp
             get { return _errorMessage; }
         }
 
+        #endregion
+
+        #region Public Methods
         public void AddItemsToBasket(List<Product> products)
         {
             foreach (Product product in products)
@@ -61,7 +65,7 @@ namespace BasketApp
             CalculateOriginalTotalPrice();
         }
 
-        public void ApplyVoucher(Voucher voucher)
+        public void ApplyVoucher(GiftVoucher voucher)
         {
             if (IsVoucherValid(voucher))
             {
@@ -70,11 +74,22 @@ namespace BasketApp
             CalculateTotalPrice();
         }
 
-        bool IsVoucherValid(Voucher voucher)
+        public void RemoveItemFromBasket(Product product)
+        {
+            Product productToRemove = _basketItems.Where(w => w.Name == product.Name).FirstOrDefault();
+            _basketItems.Remove(productToRemove);
+            CalculateOriginalTotalPrice();
+            ReEvaluateAppliedVouchers();
+        }
+
+        #endregion
+
+        #region Private Methods
+        bool IsVoucherValid(GiftVoucher voucher)
         {
             bool isVoucherValid = false;
 
-            if (voucher.GetType() == typeof(Voucher))
+            if (voucher.GetType() == typeof(GiftVoucher))
             {
                 isVoucherValid = true;
                 _discountPrice = _discountPrice + voucher.Discount;
@@ -115,19 +130,20 @@ namespace BasketApp
             {
                 List<Product> qualifyingProducts = BasketItems.Where(w => w.Category == voucher.ProductCategory).ToList();
 
-                decimal qualifyingProductsTotalPrice = 0;
-                decimal adjustedProductDiscount = 0;
+                if (qualifyingProducts.Count > 0)
+                {
+                    decimal qualifyingProductsTotalPrice = 0;
+                    decimal adjustedProductDiscount = 0;
 
-                foreach (Product product in qualifyingProducts)
-                {
-                    qualifyingProductsTotalPrice = qualifyingProductsTotalPrice + product.Price;
-                }
-                if (voucher.Discount > qualifyingProductsTotalPrice)
-                {
-                    adjustedProductDiscount = adjustedProductDiscount + qualifyingProductsTotalPrice;
-                }
-                if (qualifyingProducts.Count() > 0)
-                {
+                    foreach (Product product in qualifyingProducts)
+                    {
+                        qualifyingProductsTotalPrice = qualifyingProductsTotalPrice + product.Price;
+                    }
+                    if (voucher.Discount > qualifyingProductsTotalPrice)
+                    {
+                        adjustedProductDiscount = adjustedProductDiscount + qualifyingProductsTotalPrice;
+                    }
+
                     isValid = true;
                     _discountPrice = _discountPrice + adjustedProductDiscount;
                 }
@@ -136,7 +152,6 @@ namespace BasketApp
                     _errorMessage = $"There are no products in your basket applicable to voucher {voucher.VoucherCode}.";
                 }
             }
-
             return isValid;
         }
 
@@ -189,29 +204,22 @@ namespace BasketApp
             _totalPrice = _originalPrice - _discountPrice;
         }
 
-        public void RemoveItemFromBasket(Product product)
-        {
-            Product productToRemove = _basketItems.Where(w => w.Name == product.Name).FirstOrDefault();
-            _basketItems.Remove(productToRemove);
-            CalculateOriginalTotalPrice();
-            ReEvaluateAppliedVouchers();
-        }
-
         void ReEvaluateAppliedVouchers()
         {
             _discountPrice = 0;
-            List<Voucher> appliedVouchers = new List<Voucher>();
-            foreach (Voucher voucher in AppliedVouchers)
+            List<GiftVoucher> appliedVouchers = new List<GiftVoucher>();
+            foreach (GiftVoucher voucher in AppliedVouchers)
             {
                 appliedVouchers.Add(voucher);
             }
 
-            _appliedVouchers = new List<Voucher>();
+            _appliedVouchers = new List<GiftVoucher>();
 
-            foreach (Voucher voucher in appliedVouchers)
+            foreach (GiftVoucher voucher in appliedVouchers)
             {
                 ApplyVoucher(voucher);
             }
         }
+        #endregion
     }
 }
